@@ -1,0 +1,15 @@
+18:18:22.334 [main] INFO  org.hibernate.Version - [logVersion] - HHH000412: Hibernate ORM core version 5.5.3.Final
+18:18:22.945 [main] INFO  o.h.annotations.common.Version - [<clinit>] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+18:18:23.213 [main] WARN  o.hibernate.orm.connections.pooling - [configure] - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+18:18:23.214 [main] INFO  o.hibernate.orm.connections.pooling - [buildCreator] - HHH10001005: using driver [null] at URL [jdbc:oracle:thin:@localhost:1521:XE?createDataBaseIfNotExist=true]
+18:18:23.221 [main] INFO  o.hibernate.orm.connections.pooling - [buildCreator] - HHH10001001: Connection properties: {password=****, user=NTTDATA_HIBERNATE_T1}
+18:18:23.221 [main] INFO  o.hibernate.orm.connections.pooling - [buildCreator] - HHH10001003: Autocommit mode: false
+18:18:23.225 [main] INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl - [<init>] - HHH000115: Hibernate connection pool size: 20 (min=1)
+18:18:23.869 [main] INFO  org.hibernate.dialect.Dialect - [<init>] - HHH000400: Using dialect: org.hibernate.dialect.OracleDialect
+18:18:23.875 [main] WARN  o.hibernate.dialect.Oracle9Dialect - [<init>] - HHH000063: The Oracle9Dialect dialect has been deprecated; use either Oracle9iDialect or Oracle10gDialect instead
+18:18:23.877 [main] WARN  org.hibernate.dialect.OracleDialect - [<init>] - HHH000064: The OracleDialect dialect has been deprecated; use Oracle8iDialect instead
+18:18:24.806 [main] INFO  o.hibernate.orm.connections.access - [getIsolatedConnection] - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@51e754e1] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+18:18:24.837 [main] INFO  o.hibernate.orm.connections.access - [getIsolatedConnection] - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@603cabc4] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+18:18:24.881 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - [initiateService] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+18:18:25.335 [main] INFO  com.nttdata.hibernate.NTTDataMain - [main] - Cliente 1: Rodriguez Felix, Gabriel --> Documento de Identidad: 11111111A
+18:18:25.335 [main] INFO  com.nttdata.hibernate.NTTDataMain - [main] - Cliente 4: Rodriguez Felix, Gabriel --> Documento de Identidad: 44444444D
