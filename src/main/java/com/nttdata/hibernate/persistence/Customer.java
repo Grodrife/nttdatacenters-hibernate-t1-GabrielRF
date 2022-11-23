@@ -1,12 +1,16 @@
 package com.nttdata.hibernate.persistence;
 
-import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -20,25 +24,28 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name = "NTTDATA_HT1_CUSTOMER")
-public class Customer extends AbstractEntity implements Serializable {
+public class Customer extends AbstractEntity {
 
-	/** Serial Version */
+	// Serial Version
 	private static final long serialVersionUID = 1L;
 
-	/** Identificador (Primary Key PK) */
+	// Identificador (Primary Key PK)
 	private Integer customerId;
 
-	/** Nombre del cliente */
+	// Nombre del cliente
 	private String customerName;
 
-	/** Primer apellido del cliente */
+	// Primer apellido del cliente
 	private String customerFirstLastName;
 
-	/** Segundo apellido del cliente */
+	// Segundo apellido del cliente
 	private String customerSecondLastName;
 
-	/** Documento de identificacion del cliente */
+	// Documento de identificacion del cliente
 	private String customerIdentityDocument;
+
+	// Contratos asociados al Cliente
+	private List<Contract> customerContractList;
 
 	/**
 	 * Metodo Getter de customerId
@@ -46,7 +53,8 @@ public class Customer extends AbstractEntity implements Serializable {
 	 * @return customerId
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customerSequence")
+	@SequenceGenerator(name = "customerSequence", sequenceName = "NTTDATA_HT1_CUSTOMER_SEQUENCE")
 	@Column(name = "CUSTOMER_ID")
 	public Integer getCustomerId() {
 		return customerId;
@@ -137,11 +145,23 @@ public class Customer extends AbstractEntity implements Serializable {
 		this.customerIdentityDocument = customerIdentityDocument;
 	}
 
-	@Override
-	public String toString() {
-		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", customerFirstLastName="
-				+ customerFirstLastName + ", customerSecondLastName=" + customerSecondLastName
-				+ ", customerIdentityDocument=" + customerIdentityDocument + "]";
+	/**
+	 * Metodo Getter de customerContractList
+	 * 
+	 * @return customerContractList
+	 */
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "contractCustomer")
+	public List<Contract> getCustomerContractList() {
+		return customerContractList;
+	}
+
+	/**
+	 * Metodo Setter de customerContractList
+	 * 
+	 * @param customerContractList
+	 */
+	public void setCustomerContractList(List<Contract> customerContractList) {
+		this.customerContractList = customerContractList;
 	}
 
 	/**
@@ -150,7 +170,7 @@ public class Customer extends AbstractEntity implements Serializable {
 	 * @return class
 	 */
 	@Transient
-	public Class<?> getClase() {
+	public Class<?> getCustomerClass() {
 		return Customer.class;
 	}
 
@@ -163,4 +183,12 @@ public class Customer extends AbstractEntity implements Serializable {
 	public void setId(Integer id) {
 		this.customerId = id;
 	}
+
+	@Override
+	public String toString() {
+		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", customerFirstLastName="
+				+ customerFirstLastName + ", customerSecondLastName=" + customerSecondLastName
+				+ ", customerIdentityDocument=" + customerIdentityDocument + "]";
+	}
+
 }

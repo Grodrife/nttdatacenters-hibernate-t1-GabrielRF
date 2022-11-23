@@ -13,6 +13,8 @@
 
 		<!-- MAPEOS -->
 		<mapping class="com.nttdata.hibernate.persistence.Customer" />
+		<mapping class="com.nttdata.hibernate.persistence.Contract" />
+		<mapping class="com.nttdata.hibernate.persistence.Service" />
 
 	</session-factory>
 </hibernate-configuration>

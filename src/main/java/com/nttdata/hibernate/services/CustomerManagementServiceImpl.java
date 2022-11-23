@@ -1,5 +1,6 @@
 package com.nttdata.hibernate.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -18,11 +19,11 @@ import com.nttdata.hibernate.persistence.CustomerDaoImpl;
  */
 public class CustomerManagementServiceImpl implements CustomerManagementServiceI {
 
-	/** DAO de cliente(NTTDATA_HT1_CUSTOMER) */
+	// DAO de cliente(NTTDATA_HT1_CUSTOMER)
 	private CustomerDaoI customerDao;
 
 	/**
-	 * Metodo constructor
+	 * Metodo constructor del servicio de Cliente
 	 * 
 	 * @param session
 	 */
@@ -63,7 +64,7 @@ public class CustomerManagementServiceImpl implements CustomerManagementServiceI
 	public void updateCustomer(Customer customer) {
 
 		if (customer != null && customer.getCustomerId() != null) {
-			customerDao.delete(customer);
+			customerDao.update(customer);
 		}
 
 	}
@@ -73,6 +74,12 @@ public class CustomerManagementServiceImpl implements CustomerManagementServiceI
 			String customerSecondLastName) {
 
 		return customerDao.searchByNameAndLastNames(customerName, customerFirstLastName, customerSecondLastName);
+	}
+
+	@Override
+	public List<Customer> searchCustomerEndBeforeDate(LocalDate contractEndDate) {
+
+		return customerDao.searchCustomerEndBeforeDate(contractEndDate);
 	}
 
 }

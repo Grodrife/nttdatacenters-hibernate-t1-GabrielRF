@@ -1,5 +1,6 @@
 package com.nttdata.hibernate.persistence;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -23,4 +24,13 @@ public interface CustomerDaoI extends CommonDaoI<Customer> {
 	 */
 	public List<Customer> searchByNameAndLastNames(final String customerName, final String customerFirstLastName,
 			final String customerSecondLastName);
+
+	/**
+	 * Consulta para obtener clientes que tengan algun contrato que finalice antes
+	 * que la fecha concretada
+	 * 
+	 * @param contractEndDate
+	 * @return List<Customer>
+	 */
+	public List<Customer> searchCustomerEndBeforeDate(final LocalDate contractEndDate);
 }
